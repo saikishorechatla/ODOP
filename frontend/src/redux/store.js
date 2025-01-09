@@ -1,8 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit';
-
+import Registration from './auth/regSlice';
+import SignIn from './auth/signInSlice';
 const store = configureStore({
   reducer: {
-    // Add your reducers here
+    Registration: Registration,
+    SingIn: SignIn,
   },
 });
 

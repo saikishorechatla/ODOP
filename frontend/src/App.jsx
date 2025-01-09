@@ -1,9 +1,11 @@
-import {useState} from 'react';
+import Routes from './components/Routing';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
     <>
-      <h1>HelloWord</h1>
+      <Navbar />
+      <Routes />
     </>
   );
 }
