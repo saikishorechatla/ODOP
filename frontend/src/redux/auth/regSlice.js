@@ -7,11 +7,13 @@ export const registerUser = createAsyncThunk(
   'auth/registerUser',
   async (formData, {rejectWithValue}) => {
     try {
-      const response = await axios.post(`${config.utl}/registration`, formData);
+      const response = await axios.post(`${config.url}/registration`, formData);
       return response.data; // The data returned from the API
     } catch (error) {
-      // Return the error response
-      return rejectWithValue(error.response?.data || 'Something went wrong');
+      console.error('Registration API error:', error);
+      return rejectWithValue(
+        error.response?.data || 'An unexpected error occurred',
+      );
     }
   },
 );
@@ -19,7 +21,7 @@ export const registerUser = createAsyncThunk(
 const authSlice = createSlice({
   name: 'Registration',
   initialState: {
-    response: null,
+    registrationResponse: null,
     isLoading: false,
     error: null,
   },
@@ -32,7 +34,7 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.response = action.payload; // Update the user state with response data
+        state.registrationResponse = action.payload; // Update the state with response data
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;

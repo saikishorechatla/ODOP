@@ -8,8 +8,8 @@ import {
   validateConfirmPassword,
 } from './validation';
 import ErrorMessage from '../Errors/ErrorMessage';
-import registerUser from './../../redux/auth/regSlice'
-import { useDispatch } from 'react-redux';
+import {registerUser} from './../../redux/auth/regSlice';
+import {useDispatch} from 'react-redux';
 
 const Registration = () => {
   const dispatch = useDispatch();
@@ -33,7 +33,6 @@ const Registration = () => {
     const {name, value} = e.target;
     setFormData({...formData, [name]: value});
     validateField(name, value);
-
   };
 
   const validateField = (name, value) => {
@@ -82,14 +81,11 @@ const Registration = () => {
       if (errors[key]) valid = false;
     });
 
-    dispatch(registerUser({...formData}))
-    .unwrap()
-    .then((response) => {
-      console.log("Registration successful!", response);
-    })
-    .catch((error) => {
-      console.error("Registration failed:", error);
-    });
+    if (valid) {
+      dispatch(registerUser(formData));
+    } else {
+      console.log('Please fix the errors.');
+    }
   };
 
   return (

@@ -1,2 +1,2 @@
-const url = 'URL'
+const url = 'URL';
 export default url;

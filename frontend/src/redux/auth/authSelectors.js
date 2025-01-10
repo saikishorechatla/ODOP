@@ -1,6 +1,7 @@
 export const selectResponse = state => state.Registration.response;
 
-export const selectRegistrationIsLoading = state => state.Registration.isLoading;
+export const selectRegistrationIsLoading = state =>
+  state.Registration.isLoading;
 
 export const selectRegistrationError = state => state.Registration.error;
 
