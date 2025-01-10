@@ -2,7 +2,7 @@ url update
 
 present i created reg page with post request
 
-goto config.js file which is in src in URL place localhost your spring boot port number 
+goto config.js file which is in src in URL place localhost your spring boot localhost with port number (eg -> http://localhost:5173)
 /registration  is route 
 object structure 
 
